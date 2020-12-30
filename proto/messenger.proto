@@ -4,8 +4,6 @@ import "google/protobuf/empty.proto";
 
 package messenger;
 
-option go_package = ".;main";
-
 service Messenger {
   rpc GetMessages (google.protobuf.Empty) returns (stream MessageResponse) {}
   rpc CreateMessage (MessageRequest) returns (MessageResponse) {}

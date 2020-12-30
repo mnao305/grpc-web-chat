@@ -7,3 +7,13 @@ services:
       dockerfile: ./proto/Dockerfile
     volumes:
       - .:/proto
+  server:
+    build:
+      context: .
+      dockerfile: ./server/Dockerfile
+    volumes:
+      - ./server:/go/src/grpc-web-chat
+    ports:
+      - "9090:9090"
+    depends_on:
+      - proto
