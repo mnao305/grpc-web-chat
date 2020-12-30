@@ -17,3 +17,9 @@ services:
       - "9090:9090"
     depends_on:
       - proto
+  envoy:
+    build: ./proxy
+    ports:
+      - "8080:8080"
+    links:
+      - server
