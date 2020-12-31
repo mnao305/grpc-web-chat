@@ -1,16 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <ChatPost />
+  <ChatList />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import ChatPost from './components/ChatPost/index.vue'
+import ChatList from './components/ChatList/index.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    ChatPost,
+    ChatList
   }
 })
 </script>
