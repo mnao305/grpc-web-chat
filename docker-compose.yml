@@ -16,6 +16,6 @@ services:
   envoy:
     build: ./proxy
     ports:
-      - "8080:8080"
+      - "8081:8081"
     links:
       - server
