@@ -19,3 +19,12 @@ services:
       - "8081:8081"
     links:
       - server
+  client:
+    build: ./client
+    volumes:
+      - ./client:/client
+      - /client/node_modules
+    depends_on:
+      - proto
+    ports:
+      - "8080:8080"
