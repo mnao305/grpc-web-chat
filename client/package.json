@@ -9,9 +9,12 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "google-protobuf": "^3.14.0",
+    "grpc-web": "^1.2.1",
     "vue": "^3.0.0"
   },
   "devDependencies": {
+    "@types/google-protobuf": "^3.7.4",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
