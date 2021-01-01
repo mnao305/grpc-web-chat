@@ -7,6 +7,9 @@ export class MessageRequest extends jspb.Message {
   getMessage(): string;
   setMessage(value: string): MessageRequest;
 
+  getName(): string;
+  setName(value: string): MessageRequest;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MessageRequest.AsObject;
   static toObject(includeInstance: boolean, msg: MessageRequest): MessageRequest.AsObject;
@@ -18,12 +21,19 @@ export class MessageRequest extends jspb.Message {
 export namespace MessageRequest {
   export type AsObject = {
     message: string,
+    name: string,
   }
 }
 
 export class MessageResponse extends jspb.Message {
   getMessage(): string;
   setMessage(value: string): MessageResponse;
+
+  getName(): string;
+  setName(value: string): MessageResponse;
+
+  getDate(): string;
+  setDate(value: string): MessageResponse;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): MessageResponse.AsObject;
@@ -36,6 +46,8 @@ export class MessageResponse extends jspb.Message {
 export namespace MessageResponse {
   export type AsObject = {
     message: string,
+    name: string,
+    date: string,
   }
 }
 
