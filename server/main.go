@@ -18,12 +18,12 @@ const (
 
 type server struct {
 	pb.UnimplementedMessengerServer
-	requests []*pb.MessageRequest
+	requests []*pb.MessageResponse
 }
 
 func (s *server) GetMessages(_ *emptypb.Empty, stream pb.Messenger_GetMessagesServer) error {
 	for _, r := range s.requests {
-		if err := stream.Send(&pb.MessageResponse{Message: r.GetMessage()}); err != nil {
+		if err := stream.Send(r); err != nil {
 			return err
 		}
 	}
@@ -33,8 +33,8 @@ func (s *server) GetMessages(_ *emptypb.Empty, stream pb.Messenger_GetMessagesSe
 		currentCount := len(s.requests)
 		if previousCount < currentCount {
 			r := s.requests[currentCount-1]
-			log.Printf("Sent: %v", r.GetMessage())
-			if err := stream.Send(&pb.MessageResponse{Message: r.GetMessage()}); err != nil {
+			log.Printf("Sent: %v", r)
+			if err := stream.Send(r); err != nil {
 				return err
 			}
 		}
@@ -44,10 +44,10 @@ func (s *server) GetMessages(_ *emptypb.Empty, stream pb.Messenger_GetMessagesSe
 
 func (s *server) CreateMessage(ctx context.Context, r *pb.MessageRequest) (*pb.MessageResponse, error) {
 	log.Printf("Received: %v", r.GetMessage())
-	newR := &pb.MessageRequest{Message: r.GetMessage() + ": " + time.Now().Format("2006-01-02 15:04:05")}
+	newR := &pb.MessageResponse{Message: r.GetMessage(), Date: time.Now().Format("2006-01-02T15:04:05.000000Z"), Name: r.GetName()}
 	s.requests = append(s.requests, newR)
 	log.Printf("date: %v", s.requests)
-	return &pb.MessageResponse{Message: r.GetMessage()}, nil
+	return newR, nil
 }
 
 func main() {
