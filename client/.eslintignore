@@ -1,1 +1,2 @@
 src/messenger/MessengerServiceClientPb.ts
+src/messenger/messenger_pb.*
